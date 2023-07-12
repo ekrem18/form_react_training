@@ -3,18 +3,25 @@ import "./index.css";
 
 export default function App() {
   
-  const [name, setName] = useState("")
+
+  const [values, setValues] = useState({
+    firstName:"", 
+    lastName:"" ,
+    phoneNumber:"", 
+    adress:"" ,
+    email:"" 
+  })
   
-  const handleFirstname = (e) =>{
-    setName(e.target.value)
-  }
+  const handleValues= (e) => {
+    setValues({...values, [e.target.name]:e.target.value })
+  };
 
   return (
     <div className="form-container">
       <form className="register-form" >
         
         <input
-          onChange={handleFirstname}
+          onChange={handleValues}
           id="first-name"
           className="form-field"
           type="text"
@@ -22,23 +29,22 @@ export default function App() {
           name="firstName"
           required
         />
-        <span>{name}</span>
+        <span>{values.firstName}</span>
         
         
         <input
-          
+          onChange={handleValues}
           id="last-name"
           className="form-field"
           type="text"
           placeholder="Last Name"
           name="lastName"
-          required
-          
+          required  
         />
-        <span>lastname</span>
+        <span>{values.lastName}</span>
         
         <input
-         
+         onChange={handleValues}
           id="phone-number"
           className="form-field"
           type="text"
@@ -50,7 +56,7 @@ export default function App() {
         
        
         <input
-          
+          onChange={handleValues}
           id="adress"
           className="form-field"
           type="text"
@@ -63,7 +69,7 @@ export default function App() {
 
       
         <input
-          
+          onChange={handleValues}
           id="email"
           className="form-field"
           type="email"
